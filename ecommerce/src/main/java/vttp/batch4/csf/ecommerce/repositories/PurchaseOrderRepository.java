@@ -16,7 +16,19 @@ public class PurchaseOrderRepository {
   // If this method is changed, any assessment task relying on this method will
   // not be marked
   // You may only add Exception to the method's signature
-  public void create(Order order) {
+  public String create(Order order) {
     // TODO Task 3
+
+    template.update(
+      "INSERT INTO orders VALUES (?,?,?,?,?)",
+      order.getName(),
+      order.getAddress(),
+      order.getPriority(),
+      order.getComments(),
+      order.getCart().getLineItems().toString()
+    );
+
+    return order.getOrderId();
+
   }
 }

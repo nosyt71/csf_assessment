@@ -1,3 +1,4 @@
 TODO Task 1
 
 Write the command to import products.csv into Mongo in this file
+mongoimport --uri=mongodb://<host>:<port>?authSource=admin -d ecommerce -c products --type csv --file=/path/to/products.csv

@@ -1,6 +1,5 @@
 package vttp.batch4.csf.ecommerce;
 
-
 import org.bson.Document;
 
 import jakarta.json.Json;
@@ -37,5 +36,11 @@ public class Utils {
       .add("image", product.getImage())
       .add("quantity", product.getQuantity())
       .build();
+  }
+
+  public static JsonObject returnOrderId(String orderId) {
+    return Json.createObjectBuilder()
+            .add("orderId", orderId)
+            .build();
   }
 }

@@ -1,9 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Component, Input, OnInit, Output, inject } from '@angular/core';
+import {Observable, Subject} from 'rxjs';
 import {Product} from '../models';
 import {ProductService} from '../product.service';
 import {ActivatedRoute} from '@angular/router';
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -18,10 +17,12 @@ export class CategoryComponent implements OnInit {
 
   category: string = "not set"
 
+  @Output()
   products$!: Observable<Product[]>
 
   ngOnInit(): void {
     this.category = this.activatedRoute.snapshot.params['category']
     this.products$ = this.prodSvc.getProductsByCategory(this.category)
   }
+
 }
